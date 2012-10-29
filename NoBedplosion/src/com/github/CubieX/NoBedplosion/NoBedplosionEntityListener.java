@@ -66,7 +66,7 @@ They are called in the following order
                 Block block = e.getClickedBlock();
                 if(((org.bukkit.block.Block) block).getLocation().getWorld().getName().toLowerCase().contains("nether"))
                 {
-                    p.sendMessage(ChatColor.YELLOW + plugin.getConfig().getString("denybedusagemessage"));
+                    p.sendMessage(ChatColor.YELLOW + plugin.getConfig().getString("DenyBedUsageMessage"));
 
                     for(Player cyclePlayer: plugin.getServer().getOnlinePlayers()) {
 
