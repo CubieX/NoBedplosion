@@ -1,0 +1,17 @@
+name: NoBedplosion
+main: com.github.CubieX.NoBedplosion.NoBedplosion
+version: 1.0
+description: Prevents players to use beds in the nether
+
+commands:
+    nbp:
+      description: Using NoBedplosion
+      usage: /nbp version | reload
+
+permissions:
+    nobedplosion.admin:
+        description: Allows reloading the plugin and all other commands.
+        default: op
+    nobedplosion.notify:
+        description: Allows receiving of notify message if a player tried to use a bed in the nether
+        default: op

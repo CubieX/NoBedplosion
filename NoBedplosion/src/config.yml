@@ -1,0 +1,9 @@
+# do NOT change the config version!
+config_version: '1'
+# enable debug output
+debug: false
+# Message to be displayed when Player tries to use a bed in the nether
+DenyBedUsageMessage: Im Nether duerfen keine Betten benutzt werden!
+# Message to be send to players with the 'nobedplosion.notify' permission
+# when a player tried to use a bed in the nether
+NotifyOfTryMessage: hat versucht im Nether ein Bett zu benutzen.
