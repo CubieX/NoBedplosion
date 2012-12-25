@@ -1,5 +1,7 @@
 Changelog for NoBedplosion by CubieX
 ------------------------------------
+V. 1.0.1
+- build against CB 1.4.6-R0.1
 
-V. 1.0
+V. 1.0.0
 - Initial version

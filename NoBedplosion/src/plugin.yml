@@ -1,6 +1,7 @@
 name: NoBedplosion
 main: com.github.CubieX.NoBedplosion.NoBedplosion
-version: 1.0
+version: 1.0.1
+authors: [CubieX]
 description: Prevents players to use beds in the nether
 
 commands:
