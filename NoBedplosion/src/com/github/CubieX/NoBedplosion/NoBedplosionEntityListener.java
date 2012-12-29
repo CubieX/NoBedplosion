@@ -14,18 +14,18 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class NoBedplosionEntityListener implements Listener
 {
-    private final NoBedplosion plugin;
-    private final Logger log;
+   private final NoBedplosion plugin;
+   private final Logger log;
 
-    //Constructor
-    public NoBedplosionEntityListener(NoBedplosion plugin, Logger log)
-    {
-        this.plugin = plugin;
-        this.log = log;
+   //Constructor
+   public NoBedplosionEntityListener(NoBedplosion plugin, Logger log)
+   {
+      this.plugin = plugin;
+      this.log = log;
 
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);
-    }
-    /*
+      plugin.getServer().getPluginManager().registerEvents(this, plugin);
+   }
+   /*
    Event Priorities
 
 There are six priorities in Bukkit
@@ -51,34 +51,34 @@ They are called in the following order
     If the outcome gets changed (i.e. event gets cancelled, uncancelled or actions taken that can lead to it), a prio from LOWEST to HIGHEST must be used!
 
     The option "ignoreCancelled" if set to "true" says, that the plugin will not get this event if it has been cancelled beforehand from another plugin.
-     */
+    */
 
-    //================================================================================================
-    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true) // event has MONITOR priority and will be skipped if it has been cancelled before
-    public void onPlayerInteract(PlayerInteractEvent e)
-    {
-        Player p = e.getPlayer();
-        if(e.getAction() == Action.RIGHT_CLICK_BLOCK)
-        {
-            if(e.getClickedBlock().toString().toLowerCase().contains("bed"))
+   //================================================================================================
+   @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true) // event has MONITOR priority and will be skipped if it has been cancelled before
+   public void onPlayerInteract(PlayerInteractEvent e)
+   {
+      Player p = e.getPlayer();
+      if(e.getAction() == Action.RIGHT_CLICK_BLOCK)
+      {
+         if(e.getClickedBlock().toString().toLowerCase().contains("bed"))
+         {
+
+            Block block = e.getClickedBlock();
+            if(((org.bukkit.block.Block) block).getLocation().getWorld().getName().toLowerCase().contains("nether"))
             {
+               p.sendMessage(ChatColor.YELLOW + plugin.getConfig().getString("DenyBedUsageMessage"));
 
-                Block block = e.getClickedBlock();
-                if(((org.bukkit.block.Block) block).getLocation().getWorld().getName().toLowerCase().contains("nether"))
-                {
-                    p.sendMessage(ChatColor.YELLOW + plugin.getConfig().getString("DenyBedUsageMessage"));
+               for(Player cyclePlayer: plugin.getServer().getOnlinePlayers()) {
 
-                    for(Player cyclePlayer: plugin.getServer().getOnlinePlayers()) {
-
-                        if((cyclePlayer.hasPermission("nobedplosion.notify")) &&
-                                (p != cyclePlayer))
-                        {
-                            cyclePlayer.sendMessage(ChatColor.YELLOW + p.getName() + ChatColor.WHITE + " " + plugin.getConfig().getString("NotifyOfTryMessage"));
-                        }
-                    }
-                    e.setCancelled(true);
-                }
-            }            
-        }
-    }
+                  if((cyclePlayer.hasPermission("nobedplosion.notify")) &&
+                        (p != cyclePlayer))
+                  {
+                     cyclePlayer.sendMessage(ChatColor.YELLOW + p.getName() + ChatColor.WHITE + " " + plugin.getConfig().getString("NotifyOfTryMessage"));
+                  }
+               }
+               e.setCancelled(true);
+            }
+         }            
+      }
+   }
 }
