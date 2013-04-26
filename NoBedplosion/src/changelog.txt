@@ -1,5 +1,11 @@
 Changelog for NoBedplosion by CubieX
 ------------------------------------
+V. 1.0.2
+- some minor improvements
+- made the check more robust and independent of actual name of the nether worlds
+- fixed bug where placing something next to bedrock will trigger the warnig message
+- build against CB 1.5.1-R0.2
+
 V. 1.0.1
 - build against CB 1.4.6-R0.1
 

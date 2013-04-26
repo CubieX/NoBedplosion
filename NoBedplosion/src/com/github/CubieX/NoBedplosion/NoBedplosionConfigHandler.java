@@ -1,8 +1,5 @@
 package com.github.CubieX.NoBedplosion;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -10,15 +7,12 @@ import org.bukkit.configuration.file.FileConfiguration;
 public class NoBedplosionConfigHandler
 {
    private final NoBedplosion plugin;
-   private final Logger log;
-
    private FileConfiguration config;
 
    //Constructor
-   public NoBedplosionConfigHandler(NoBedplosion plugin, Logger log)
+   public NoBedplosionConfigHandler(NoBedplosion plugin)
    {        
       this.plugin = plugin;
-      this.log = log;
 
       initConfig();        
    }

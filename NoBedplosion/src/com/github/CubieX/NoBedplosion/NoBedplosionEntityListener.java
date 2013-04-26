@@ -1,8 +1,9 @@
 package com.github.CubieX.NoBedplosion;
 
-import java.util.logging.Logger;
-
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,18 +11,15 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 
 public class NoBedplosionEntityListener implements Listener
 {
    private final NoBedplosion plugin;
-   private final Logger log;
 
    //Constructor
-   public NoBedplosionEntityListener(NoBedplosion plugin, Logger log)
+   public NoBedplosionEntityListener(NoBedplosion plugin)
    {
       this.plugin = plugin;
-      this.log = log;
 
       plugin.getServer().getPluginManager().registerEvents(this, plugin);
    }
@@ -60,11 +58,9 @@ They are called in the following order
       Player p = e.getPlayer();
       if(e.getAction() == Action.RIGHT_CLICK_BLOCK)
       {
-         if(e.getClickedBlock().toString().toLowerCase().contains("bed"))
-         {
-
-            Block block = e.getClickedBlock();
-            if(((org.bukkit.block.Block) block).getLocation().getWorld().getName().toLowerCase().contains("nether"))
+         if(e.getClickedBlock().getType().equals(Material.BED_BLOCK))
+         {            
+            if(p.getLocation().getWorld().getEnvironment().equals(World.Environment.NETHER))
             {
                p.sendMessage(ChatColor.YELLOW + plugin.getConfig().getString("DenyBedUsageMessage"));
 

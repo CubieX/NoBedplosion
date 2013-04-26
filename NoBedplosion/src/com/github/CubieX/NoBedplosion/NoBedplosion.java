@@ -1,6 +1,8 @@
 package com.github.CubieX.NoBedplosion;
 
 import java.util.logging.Logger;
+
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class NoBedplosion extends JavaPlugin
@@ -10,7 +12,7 @@ public class NoBedplosion extends JavaPlugin
    private NoBedplosionCommandHandler comHandler = null;
 
    private NoBedplosion plugin;
-   private static final Logger log = Logger.getLogger("Minecraft");
+   private static final Logger log = Bukkit.getServer().getLogger();
    public static String logPrefix = "[NoBedplosion] "; // Prefix to go in front of all log entries
 
    @Override
@@ -20,10 +22,10 @@ public class NoBedplosion extends JavaPlugin
 
       log.info(getDescription().getName() + " version " + getDescription().getVersion() + " is enabled!");
 
-      cHandler = new NoBedplosionConfigHandler(this, log);       
-      comHandler = new NoBedplosionCommandHandler(this, log, cHandler);
+      cHandler = new NoBedplosionConfigHandler(this);       
+      comHandler = new NoBedplosionCommandHandler(this, cHandler);
       getCommand("nbp").setExecutor(comHandler);
-      eListener = new NoBedplosionEntityListener(this,log);        
+      eListener = new NoBedplosionEntityListener(this);        
    }   
 
    @Override

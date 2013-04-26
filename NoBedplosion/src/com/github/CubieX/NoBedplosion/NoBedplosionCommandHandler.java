@@ -1,7 +1,5 @@
 package com.github.CubieX.NoBedplosion;
 
-import java.util.logging.Logger;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -12,13 +10,11 @@ public class NoBedplosionCommandHandler implements CommandExecutor
 {
    private final NoBedplosion plugin;
    private final NoBedplosionConfigHandler cHandler;
-   private final Logger log;
 
-   public NoBedplosionCommandHandler(NoBedplosion plugin, Logger log, NoBedplosionConfigHandler cHandler)
+   public NoBedplosionCommandHandler(NoBedplosion plugin, NoBedplosionConfigHandler cHandler)
    {
       this.plugin = plugin;
       this.cHandler = cHandler;
-      this.log = log;
    }
 
    @Override
@@ -52,7 +48,7 @@ public class NoBedplosionCommandHandler implements CommandExecutor
                }
                else
                {
-                  sender.sendMessage(ChatColor.RED + "You du not have sufficient permission to reload " + plugin.getDescription().getName() + "!");
+                  sender.sendMessage(ChatColor.RED + "You do not have sufficient permission to reload " + plugin.getDescription().getName() + "!");
                }
             }
 
